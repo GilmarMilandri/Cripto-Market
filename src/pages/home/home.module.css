@@ -85,9 +85,31 @@ table td{
     border-radius: 8px;
 }
 
+.imgLogo{
+    width: 20px;
+    height: 20px;
+    transition: all 1s;
+}
+
+.imgLogo:hover{
+    transform: scale(1.5);
+    z-index: 99;
+}
+
+.name{
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
 
 /* Responsividade */
 @media screen and (max-width: 700px) {
+
+    .name img{
+        margin-left: 14px;
+    }
+
     table{
         border: 0;
     }
