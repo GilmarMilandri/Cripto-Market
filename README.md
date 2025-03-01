@@ -51,4 +51,4 @@ export default tseslint.config({
   },
 })
 ```
->>>>>>> 841bc1d (Primeiro commit - adicionando arquivos iniciais)
+>>>>>>> 841bc1d (Teste)
