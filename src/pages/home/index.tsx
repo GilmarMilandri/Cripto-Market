@@ -119,6 +119,7 @@ export function Home() {
                                     src={`https://assets.coincap.io/assets/icons/${item.symbol.toLowerCase()}@2x.png`}
                                     alt="Logo Cripto" 
                                     />
+                                    
                                     <Link to={`/detail/${item.id}`}>
                                     <span>{item.name}</span> | {item.symbol}
                                     </Link>
