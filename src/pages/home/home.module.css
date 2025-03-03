@@ -42,7 +42,7 @@ th{
 }
 
 .tr{
-    background-color: #1d1c20;
+    background-color: #27262b;
 }
 
 td:first-child,
@@ -78,7 +78,7 @@ table td{
 }
 
 .buttonMore{
-    background-color: #30beff;
+    background-color: #2190c4;
     padding: 8px 24px;
     color: #FFF;
     margin: 14px 0;
