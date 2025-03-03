@@ -4,7 +4,7 @@ import { BsSearch } from 'react-icons/bs'
 import { Link, useNavigate } from 'react-router-dom'
 
 
-interface CoinProps{
+export interface CoinProps{
     id: string;
     name: string;
     symbol: string;
@@ -22,24 +22,25 @@ interface CoinProps{
     formatedVolume?: string;
 }
 
-interface DataProps{
+interface DataProp{
     data: CoinProps[]
 }
 
 export function Home() {
     const [input, setInput] = useState("")
     const [coins, setCoins] = useState<CoinProps[]>([]);
+    const [offset, setOffset] = useState(0);
 
     const navigate = useNavigate();
 
     useEffect(() => {
         getData();
-    }, [])
+    }, [offset])
 
     async function getData() {
-        fetch("https://api.coincap.io/v2/assets?limit=10&offset=0")
+        fetch(`https://api.coincap.io/v2/assets?limit=10&offset=${offset}`)
         .then(response => response.json())
-        .then((data: DataProps) => {
+        .then((data: DataProp) => {
             const coinsData = data.data;
 
             const price = Intl.NumberFormat("en-US", {
@@ -65,7 +66,10 @@ export function Home() {
             })
 
             //console.log(formatedResult);
-            setCoins(formatedResult);
+
+            const listCoins = [...coins, ...formatedResult]
+
+            setCoins(listCoins);
 
         })
     }
@@ -79,7 +83,13 @@ export function Home() {
     }
 
     function handleGetMore(){
-       
+       if(offset === 0){
+            setOffset(10);
+            return;
+        }
+
+        setOffset(offset + 10);
+    
     }
 
     return(
@@ -119,7 +129,7 @@ export function Home() {
                                     src={`https://assets.coincap.io/assets/icons/${item.symbol.toLowerCase()}@2x.png`}
                                     alt="Logo Cripto" 
                                     />
-                                    
+
                                     <Link to={`/detail/${item.id}`}>
                                     <span>{item.name}</span> | {item.symbol}
                                     </Link>
