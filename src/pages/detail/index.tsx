@@ -97,7 +97,7 @@ export function Detail() {
 
                 <a>
                 <strong>Mudança 24H:</strong> <span className={Number(coin?.changePercent24Hr) > 0 ? styles.profit : styles.loss}>
-                    {Number(coin?.changePercent24Hr).toFixed(2)}%</span>
+                    {Number(coin?.changePercent24Hr).toFixed(2)}</span>
                 </a>
 
             </section>
